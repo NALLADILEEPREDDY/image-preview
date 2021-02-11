@@ -1,0 +1,12 @@
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
