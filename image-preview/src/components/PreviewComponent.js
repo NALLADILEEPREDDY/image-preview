@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { ThemeContext } from "../App";
@@ -7,8 +7,9 @@ import "../App.scss";
 export default function PreviewComponent() {
   const theme = useContext(ThemeContext);
   const information = useSelector((state) => state.mainStore.information);
-  const title = useSelector((state) => state.mainStore.title); 
-  const selectedStream = useSelector((state) => state.mainStore.selectedStream); 
+  const title = useSelector((state) => state.mainStore.title);
+  const selectedStream = useSelector((state) => state.mainStore.selectedStream);
+  const uploadUrl = useSelector((state) => state.mainStore.uploadUrl);
   const inlineStyles = {
     width: "fit-content",
     backgroundColor: theme,
@@ -22,10 +23,8 @@ export default function PreviewComponent() {
         </div>
         <div className="container">
           <div className="container__image">
-            <div className="container__info">
-              {selectedStream==='photo'&&<Picture />}
-              {selectedStream==='video'&&<ReactPlayerU />}
-            </div>
+              {uploadUrl && selectedStream === "photo" && <Picture />}
+              {uploadUrl && selectedStream === "video" && <ReactPlayerU />}
           </div>
         </div>
         <div className="card-content">
@@ -38,24 +37,42 @@ export default function PreviewComponent() {
 const ReactPlayerU = () => {
   const uploadUrl = useSelector((state) => state.mainStore.uploadUrl);
   const uploadType = useSelector((state) => state.mainStore.uploadType);
-  if(uploadUrl && uploadType){
+  if (/^video/.test(uploadType)&& uploadUrl) {
     return (
       <div className="player-wrapper">
-        <ReactPlayer controls  className='react-player' url={uploadType ?URL.createObjectURL(uploadUrl.target.files[0]):uploadUrl.target.value}/>
+        <ReactPlayer
+          controls
+          className="react-player"
+          url={
+            uploadType === "videoUrl"
+              ? uploadUrl
+              : uploadType === "video" && URL.createObjectURL(uploadUrl.target.files[0])
+          }
+        />
       </div>
     );
   }
-  return <></>
+  return <></>;
 };
-const Picture = () => {
+const Picture = () => {  
   const uploadUrl = useSelector((state) => state.mainStore.uploadUrl);
   const uploadType = useSelector((state) => state.mainStore.uploadType);
-  if(uploadUrl && uploadType){
+  if (/^photo/.test(uploadType) && uploadUrl) {
     return (
       <picture>
-        <img className="image" src={uploadType?URL.createObjectURL(uploadUrl.target.files[0]):uploadUrl.target.value} alt={uploadType ?URL.createObjectURL(uploadUrl.target.files[0].name):uploadUrl.target.name} />
+        <img
+          className="image"
+          src={
+            uploadType === "photoUrl"
+              ? uploadUrl
+              : uploadType === "photo" && URL.createObjectURL(uploadUrl.target.files[0])
+          }
+          alt={
+            uploadType ? uploadType : uploadUrl.target.files[0].name
+          }
+        />
       </picture>
     );
   }
-    return<></>
+  return <></>;
 };
