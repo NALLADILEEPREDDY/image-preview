@@ -1,8 +1,21 @@
 .page-wrapper {
   display: flex;
+  flex-direction: column-reverse;
+  .item{
+    width:100vw;
+    padding-bottom: 3%;
+    margin: 1%;    
+  }
 }
-.item {
-  flex: 1;
+@media all and (min-width:700px){
+  .page-wrapper {
+    display: flex;
+    flex-direction: row;
+    .item{
+      width:50%;
+      margin: 2%;
+    }
+  }
 }
 
 .dataform {
@@ -14,7 +27,7 @@
   padding: 1rem;
 }
 .search {
-  width: 40%;
+  width: 90%;
   max-width: 95%;
   margin-left: auto;
   margin-right: auto;
@@ -59,8 +72,7 @@
       box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04),
         0px 2px 6px rgba(9, 55, 53, 0.08), 0px 16px 24px rgba(9, 55, 53, 0.1),
         0px 24px 32px rgba(9, 55, 53, 0.14);
-      width: 100%;
-      height: 100%;
+      width: 95%;      
     }
   }
 }
@@ -69,6 +81,7 @@
   color: #06c0a8;
   text-decoration: none;
   transition: ease-in 0.13s;
+  object-fit: cover;
   &:hover {
     background-color: #06c0a8;
     color: #ffffff;
@@ -78,15 +91,13 @@
 .card {
   margin-bottom: 2em;
   box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
-  width: 500px;
-  max-width: 100%;
 }
 @media all and (max-width: 500px) {
   .card {
     margin-bottom: 2em;
     box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
-    width: 250px;
-    max-width: 100%;
+    width: 90%;
+    height: 90%;
   }
 }
 

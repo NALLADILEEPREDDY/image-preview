@@ -11,13 +11,12 @@ export default function PreviewComponent() {
   const selectedStream = useSelector((state) => state.mainStore.selectedStream);
   const uploadUrl = useSelector((state) => state.mainStore.uploadUrl);
   const inlineStyles = {
-    width: "fit-content",
+    align:'center',
     backgroundColor: theme,
     boxShadow: `0 3px 8px 0 ${theme},0 3px 12px 0 ${theme}`,
   };
   return (
-    <div style={inlineStyles}>
-      <article className="card">
+      <article style={inlineStyles} className="card">
         <div>
           <h2>{title && title}</h2>
         </div>
@@ -31,7 +30,6 @@ export default function PreviewComponent() {
           <p>{information && information}</p>
         </div>
       </article>
-    </div>
   );
 }
 const ReactPlayerU = () => {
