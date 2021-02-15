@@ -10,10 +10,9 @@ import { useDispatch } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
-import "../App.scss";
 import { useState } from "react";
-
 import { usePopupState } from "material-ui-popup-state/hooks";
+import "./fileUpload.scss";
 
 const UploadPopover = (props) => {
   const dispatch = useDispatch();
@@ -58,47 +57,51 @@ const UploadPopover = (props) => {
       >
         <Box p={2}>
           <div className="inputIcons">
-            <input
-              label="attachement"
-              accept={isImage ? "image/*" : "video/*"}
-              style={{ display: "none" }}
-              id="contained-button-file"
-              name={fileFieldname}
-              type="file"
-              onChange={(event) => {
-                attachFileHandler(event);
-                popupState.close();
-              }}
-            />
-            <label htmlFor="contained-button-file">
-              <Fab component="span">
-                {isImage ? <AddPhotoAlternateIcon /> : <VideoLabelIcon />}
-              </Fab>
-            </label>
-            <TextField
-              label="Add URL"
-              name={textFieldname}
-              value={url}
-              onChange={(event) => {
-                setUrl(event.target.value);
-                setName(event.target.name);
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment>
-                    <IconButton
-                      name={textFieldname}
-                      onClick={(event) => {
-                        clickSearchHandler(event);
-                        popupState.close();
-                      }}
-                    >
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <div className="icon">
+              <input
+                label="attachement"
+                accept={isImage ? "image/*" : "video/*"}
+                style={{ display: "none" }}
+                id="contained-button-file"
+                name={fileFieldname}
+                type="file"
+                onChange={(event) => {
+                  attachFileHandler(event);
+                  popupState.close();
+                }}
+              />
+              <label htmlFor="contained-button-file">
+                <Fab component="span">
+                  {isImage ? <AddPhotoAlternateIcon /> : <VideoLabelIcon />}
+                </Fab>
+              </label>
+            </div>
+            <div className="icon">
+              <TextField
+                label="Add URL"
+                name={textFieldname}
+                value={url}
+                onChange={(event) => {
+                  setUrl(event.target.value);
+                  setName(event.target.name);
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment>
+                      <IconButton
+                        name={textFieldname}
+                        onClick={(event) => {
+                          clickSearchHandler(event);
+                          popupState.close();
+                        }}
+                      >
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
           </div>
         </Box>
       </Popover>
@@ -109,16 +112,20 @@ const UploadPopover = (props) => {
 export default function FileUploadComponent() {
   return (
     <div className="uploadComponent">
-      <UploadPopover
-        isImage={true}
-        textFieldname="photoUrl"
-        fileFieldname="photo"
-      />
-      <UploadPopover
-        isImage={false}
-        textFieldname="videoUrl"
-        fileFieldname="video"
-      />
+      <div className="uploadButton">
+        <UploadPopover
+          isImage={true}
+          textFieldname="photoUrl"
+          fileFieldname="photo"
+        />
+      </div>
+      <div className="uploadButton">
+        <UploadPopover
+          isImage={false}
+          textFieldname="videoUrl"
+          fileFieldname="video"
+        />
+      </div>
     </div>
   );
 }

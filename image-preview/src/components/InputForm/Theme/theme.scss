@@ -1,0 +1,34 @@
+@import "../../../App.scss";
+
+.theme-selection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  $gap: 1em;
+  $button-w: 10em;
+  $button-h: 7em;
+  $move-act: .125em;
+  
+  .themeButton {
+    position: relative;
+    flex: 0 1 .5*$button-w;
+    margin: $gap;
+    padding: $padding;
+    height: .5*$button-h;
+    border-radius: .2*$button-h; 
+    border: solid .125em transparent;
+    transition: .2s ease-out;
+    cursor: pointer;
+    
+    &:hover, &:focus {
+      outline: none;
+      filter: none
+    }
+    
+    &:active { transform: translateY($move-act); }
+  }
+  
+  
+}

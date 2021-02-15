@@ -1,7 +1,7 @@
 import {TextareaAutosize } from "@material-ui/core";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./theme.scss";
+import "./search.scss";
 
 const Suggestions = () => {
   const information = useSelector((state) => state.mainStore.information);

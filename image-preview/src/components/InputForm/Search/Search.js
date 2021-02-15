@@ -3,6 +3,7 @@ import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
+import "./search.scss";
 
 function Search() {
   const dispatch = useDispatch();

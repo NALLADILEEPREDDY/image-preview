@@ -1,0 +1,20 @@
+@import '../../../App.scss';
+
+.uploadComponent {
+    display: flex;
+    flex: 0, 0, 50%;
+    margin: auto;
+    justify-content: center;
+    .uploadButton{
+        @include margin-padding;
+    }
+}
+.inputIcons {
+    display: flex;
+    flex-flow: roe nowrap;
+    justify-content: center;
+    .icon{
+        @include margin-padding;  
+    }
+}
+  

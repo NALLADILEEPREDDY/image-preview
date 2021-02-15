@@ -1,0 +1,107 @@
+@import "../../App.scss";
+
+.card {
+  @include margin-padding;
+  box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+
+  h2 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__image {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-size: cover;
+      transition: ease-in-out 0.3s;
+    }
+  }
+  .card-content {
+    display: inline-block;
+    line-height: 1.4;
+    @include margin-padding;
+  }
+  
+  .card-content p {
+    overflow: hidden;
+    width: fit-content;
+    font-size: 1.5em;
+    text-overflow: ellipsis;
+  }
+}
+
+
+.image {
+  border-bottom: 1px solid transparent;
+  position: relative;
+  color: #06c0a8;
+  text-decoration: none;
+  transition: ease-in 0.13s;
+  object-fit: cover;
+ &::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+    background: rgba(255,255,255,.2);
+	border-radius: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+&:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+img {
+    display: block;
+    @include skeleton;
+  }
+}
+
+
+.player-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  
+  .react-player {
+    top: 0;
+    left: 0;
+  }
+}

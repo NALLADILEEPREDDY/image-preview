@@ -1,0 +1,12 @@
+@import "../../App.scss";
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 45%; 
+  .inputFormItem {
+    flex: 0 1 48%;
+    @include margin-padding;
+  }
+}
